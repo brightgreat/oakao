@@ -1,0 +1,6 @@
+com\service\SendEmail.class
+com\service\SendEmailForFile.class
+test\java\test.class
+com\service\SendEmailForPicAndFile.class
+main\java\com\service\OaKaoq.class
+com\service\SendEmailForPic.class
