@@ -27,6 +27,7 @@ public class OaKaoq {
 
         long sleep = 1200;// millils  每20分钟触发一次
         long lopnum = 0;
+
         int hour = 9; //默认值9 表示9点打卡
         Map<String, String> stringToMap = null;
         String failResu;
