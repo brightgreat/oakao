@@ -1,7 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f56e79c9-ec7c-4434-9365-fd66f3e0cdf5" name="Default Changelist" comment="" />
+    <list default="true" id="f56e79c9-ec7c-4434-9365-fd66f3e0cdf5" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/src/main/file/uAndp.txt" beforeDir="false" afterPath="$PROJECT_DIR$/service/src/main/file/uAndp.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/target/classes/META-INF/service.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/target/classes/com/service/SendEmail.class" beforeDir="false" afterPath="$PROJECT_DIR$/service/target/classes/com/service/SendEmail.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/target/classes/com/service/SendEmailForFile.class" beforeDir="false" afterPath="$PROJECT_DIR$/service/target/classes/com/service/SendEmailForFile.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/target/classes/com/service/SendEmailForPic.class" beforeDir="false" afterPath="$PROJECT_DIR$/service/target/classes/com/service/SendEmailForPic.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/target/classes/com/service/SendEmailForPicAndFile.class" beforeDir="false" afterPath="$PROJECT_DIR$/service/target/classes/com/service/SendEmailForPicAndFile.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/target/classes/main/java/com/service/OaKaoq.class" beforeDir="false" afterPath="$PROJECT_DIR$/service/target/classes/main/java/com/service/OaKaoq.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/target/classes/test/java/test.class" beforeDir="false" afterPath="$PROJECT_DIR$/service/target/classes/test/java/test.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/target/classes/test/java/testPub.class" beforeDir="false" afterPath="$PROJECT_DIR$/service/target/classes/test/java/testPub.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/target/test-classes/test/java/test.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/target/test-classes/test/java/testPub.class" beforeDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="$PROJECT_DIR$/web/target/" />
@@ -28,47 +42,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/service/src/main/java/com/service/OaKaoq.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="358">
-              <caret line="106" column="198" selection-start-line="106" selection-start-column="198" selection-end-line="106" selection-end-column="198" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/service/src/test/java/test.java">
-          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="216">
-              <caret line="9" selection-start-line="9" selection-end-line="9" />
+              <caret line="27" selection-start-line="27" selection-end-line="27" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/jre/lib/rt.jar!/sun/nio/cs/StreamDecoder.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="912">
-              <caret line="54" selection-start-line="54" selection-end-line="54" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/com/alibaba/fastjson/1.2.47/fastjson-1.2.47.jar!/com/alibaba/fastjson/JSONObject.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/service/src/main/file/uAndp.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="33" selection-start-column="33" selection-end-column="33" />
+            <state relative-caret-position="24">
+              <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
             </state>
           </provider>
         </entry>
@@ -90,6 +77,9 @@
       <replace>ivwclrzswndkdeeg</replace>
     </replaceStrings>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -107,9 +97,9 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/service/src/test/java/test.java" />
         <option value="$PROJECT_DIR$/service/src/main/file/backup.txt" />
-        <option value="$PROJECT_DIR$/service/src/main/file/uAndp.txt" />
         <option value="$PROJECT_DIR$/service/src/main/java/com/service/TestPub.java" />
         <option value="$PROJECT_DIR$/service/src/test/java/testPub.java" />
+        <option value="$PROJECT_DIR$/service/src/main/file/uAndp.txt" />
         <option value="$PROJECT_DIR$/service/src/main/java/com/service/OaKaoq.java" />
       </list>
     </option>
@@ -136,64 +126,64 @@
     <option name="width" value="1319" />
     <option name="height" value="784" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="project_maven_one" type="b2602c69:ProjectViewProjectNode" />
-              <item name="project_maven_one" type="462c0819:PsiDirectoryNode" />
+              <item name="oakao" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oakao" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="project_maven_one" type="b2602c69:ProjectViewProjectNode" />
-              <item name="project_maven_one" type="462c0819:PsiDirectoryNode" />
+              <item name="oakao" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oakao" type="462c0819:PsiDirectoryNode" />
               <item name="service" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="project_maven_one" type="b2602c69:ProjectViewProjectNode" />
-              <item name="project_maven_one" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="project_maven_one" type="b2602c69:ProjectViewProjectNode" />
-              <item name="project_maven_one" type="462c0819:PsiDirectoryNode" />
+              <item name="oakao" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oakao" type="462c0819:PsiDirectoryNode" />
               <item name="service" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="project_maven_one" type="b2602c69:ProjectViewProjectNode" />
-              <item name="project_maven_one" type="462c0819:PsiDirectoryNode" />
+              <item name="oakao" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oakao" type="462c0819:PsiDirectoryNode" />
               <item name="service" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="oakao" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oakao" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="service" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="project_maven_one" type="b2602c69:ProjectViewProjectNode" />
-              <item name="project_maven_one" type="462c0819:PsiDirectoryNode" />
+              <item name="oakao" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oakao" type="462c0819:PsiDirectoryNode" />
               <item name="service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="target" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1599460216452" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../project_maven_one_shouhou" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -226,7 +216,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.testPub">
+  <component name="RunManager" selected="Application.OaKaoq">
     <configuration name="OaKaoq" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="main.java.com.service.OaKaoq" />
       <module name="service" />
@@ -301,8 +291,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.testPub" />
         <item itemvalue="Application.OaKaoq" />
+        <item itemvalue="Application.testPub" />
         <item itemvalue="Application.test" />
         <item itemvalue="Application.SendEmail" />
         <item itemvalue="Application.SendEmailForPic" />
@@ -362,17 +352,27 @@
       <workItem from="1598173949015" duration="438000" />
       <workItem from="1599459711370" duration="581000" />
       <workItem from="1600252225769" duration="538000" />
+      <workItem from="1600254618646" duration="710000" />
+      <workItem from="1600261658286" duration="568000" />
     </task>
+    <task id="LOCAL-00001" summary="测试通过idea进行提交">
+      <created>1600254679014</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1600254679014</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="116963000" />
+    <option name="totallyTimeSpent" value="118241000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="55" y="-8" width="1553" height="916" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.27595446" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.28399196" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="JRebel" order="2" side_tool="true" />
       <window_info id="Image Layers" order="3" />
@@ -384,14 +384,14 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.30944964" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.34060228" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.34015346" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.32950193" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.32398754" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.32352942" />
       <window_info anchor="bottom" id="Database Changes" order="11" />
       <window_info anchor="bottom" id="Version Control" order="12" />
       <window_info anchor="bottom" id="JRebel Executor" order="13" />
@@ -400,7 +400,7 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.24966533" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Maven" order="3" weight="0.3263506" />
+      <window_info anchor="right" id="Maven" order="3" weight="0.3261889" />
       <window_info anchor="right" id="Palette" order="4" />
       <window_info anchor="right" id="Capture Analysis" order="5" />
       <window_info anchor="right" id="Database" order="6" weight="0.3299866" />
@@ -410,6 +410,10 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="测试通过idea进行提交" />
+    <option name="LAST_COMMIT_MESSAGE" value="测试通过idea进行提交" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -617,10 +621,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/service/src/main/java/com/service/TestPub.java" />
     <entry file="file://$PROJECT_DIR$/service/src/test/java/testPub.java" />
-    <entry file="file://$PROJECT_DIR$/service/src/main/java/com/service/OaKaoq.java">
+    <entry file="jar://$MAVEN_REPOSITORY$/com/alibaba/fastjson/1.2.47/fastjson-1.2.47.jar!/com/alibaba/fastjson/JSONObject.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="358">
-          <caret line="106" column="198" selection-start-line="106" selection-start-column="198" selection-end-line="106" selection-end-column="198" />
+        <state relative-caret-position="144">
+          <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/jre/lib/rt.jar!/sun/nio/cs/StreamDecoder.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="656">
+          <caret line="54" selection-start-line="54" selection-end-line="54" />
         </state>
       </provider>
     </entry>
@@ -631,24 +642,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/jre/lib/rt.jar!/sun/nio/cs/StreamDecoder.class">
+    <entry file="file://$PROJECT_DIR$/service/src/main/java/com/service/OaKaoq.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="912">
-          <caret line="54" selection-start-line="54" selection-end-line="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/alibaba/fastjson/1.2.47/fastjson-1.2.47.jar!/com/alibaba/fastjson/JSONObject.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
+        <state relative-caret-position="216">
+          <caret line="27" selection-start-line="27" selection-end-line="27" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/service/src/main/file/uAndp.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="33" selection-start-column="33" selection-end-column="33" />
+        <state relative-caret-position="24">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
         </state>
       </provider>
     </entry>
