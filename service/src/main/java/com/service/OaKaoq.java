@@ -31,12 +31,13 @@ public class OaKaoq {
         int hour = 9; //默认值9 表示9点打卡
         Map<String, String> stringToMap = null;
         String failResu;
-        String ningMengResult = null;
+
         String newD = "";
         System.out.println("我启动了，开始工作:" + df.format(new Date()));
         System.out.println("version：1.3");
         try {
             while (true) {
+                String ningMengResult = null;
                 //无限循环，采用进程阻塞方式，达到计划定时处理，low
                 lopnum += 1;
                 System.out.println("我进入了循环这是第" + lopnum + "次:" + df.format(new Date()));
