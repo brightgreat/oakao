@@ -64,14 +64,15 @@ public class OaKaoq {
                 if (h == hour) {
                     String initDate = df.format(new Date());
                     System.out.println("打卡时间到，开始打卡：" + initDate);
-
-                    Map<String, String> resule = call();
+                    String users = readFileContent("./service/src/main/file/uAndp.txt");
+                    System.out.println(users);
+                    Map<String, List<String>> resule = call(users);
                     //表示到点进入了打卡程序，不需要发邮件了
                     if (!resule.toString().toLowerCase().contains("成功")) {
                         //                    如果失败了 得到失败的那一个用户 就5分钟后再去打卡一次
                         for (int i = 0; i < 3; i++) {
                             Thread.sleep(300 * timeInterval);
-                            Map<String, String> failResuss = failCall(resule);
+                            Map<String, List<String>> failResuss = failCall(resule);
                             if (failResuss.toString().toLowerCase().contains("成功")) {
                                 System.out.println("补卡成功：" + df.format(new Date()));
                                 //如果打卡成功,结束这个循环
@@ -106,12 +107,12 @@ public class OaKaoq {
                         System.out.println("下次打K时间为：" + newD);
                     }
                     //发送邮件，告诉打卡结果
-                    SendEmail("打卡成功提醒", "进入时间为：”“" + initDate + ";" + readFileContent("./service/src/main/file/uAndp.txt") + ";全部打卡成功，现在的sleep时间为：" + sleep + ",下次进入时间为：" + newD + "/r/n 柠檬Result:" + ningMengResult);
+                    SendEmail("打卡成功提醒", "进入时间为：" + initDate + ";" + readFileContent("./service/src/main/file/uAndp.txt") + ";全部打卡成功，现在的sleep时间为：" + sleep + ",下次进入时间为：" + newD + "/r/n 柠檬Result:" + ningMengResult);
 
                 } else {
                     System.out.println("未到打卡时间：" + df.format(new Date()));
                 }
-                //判断当前时间是否是周四晚上8点，给我发邮件，提醒我进行DNF签到
+                //判断当前时间是否是周四
                 String[] weekDays = {"星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"};
                 Date date;
                 SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
@@ -126,10 +127,6 @@ public class OaKaoq {
                 if (w < 0)
                     w = 0;
                 System.out.println("今天是" + weekDays[w]);
-                //如果是周四 发送签到邮件
-                if (weekDays[w].equals("星期四") && h == 20) {
-                    SendEmailForDNF();
-                }
             }
         } catch (
                 Exception ex) {
@@ -192,35 +189,36 @@ public class OaKaoq {
      * @return
      * @throws Exception
      */
-    public static Map<String, String> call() throws Exception {
-        Map<String, String> resultss = new HashMap<String, String>();
+    public static Map<String, List<String>> call(String users) throws Exception {
+        Map<String, List<String>> resultss = new HashMap<String, List<String>>();
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         //通过登录链接得到一个cookie
         String loginUrl = "http://oa.ittx.com.cn/api/hrm/login/checkLogin"; //?loginid=hlwang@ittx.com.cn&userpassword=ec53c91144781b29d864d6a16a13e506_random_
         String dakaUrl = "http://oa.ittx.com.cn/api/hrm/kq/attendanceButton/punchButton";
 
-        System.out.println(readFileContent("./service/src/main/file/uAndp.txt"));
-
-        String users = readFileContent("./service/src/main/file/uAndp.txt");
         if (null != users) {
-            Map<String, String> stringToMap = JSONObject.parseObject(users, Map.class);
+            Map<String, List<String>> stringToMap = JSONObject.parseObject(users, Map.class);
             stringToMap.size();
             int successNum = 0;
-            Map<String, String> failUser = new HashMap<String, String>();
+            Map<String, List<String>> failUser = new HashMap<String, List<String>>();
             Map<String, String> results = new HashMap<String, String>();
-            for (Map.Entry<String, String> entry : stringToMap.entrySet()) {
+            for (Map.Entry<String, List<String>> entry : stringToMap.entrySet()) {
                 String user = entry.getKey();
-                String pwd = decord(entry.getValue());
+                List<String> env = entry.getValue();
+                String pwd = decord(env.get(0));
                 String sessionId = callHttp(loginUrl + "?loginid=" + user + "&userpassword=" + pwd, "", true);
                 //接收结果
                 String result = callHttp(dakaUrl, sessionId, false);
                 if (result.toLowerCase().contains("成功")) {
                     successNum += 1;
                     System.out.println("\r\n===========" + user + "=打卡成功======“”" + df.format(new Date()) + "==============\r\n");
+                    //成功邮件提醒
+                    SendEmailForEmail("打卡成功提醒", user + "打卡成功，打卡时间为：" + df.format(new Date()) + ";", env.get(1));
                 } else {
-                    failUser.put(user, entry.getValue());
+                    failUser.put(user, env);
                     results.put(user, "pwd：" + entry.getValue() + ",loginResult:" + sessionId + ",callResult:" + result);
                     System.out.println("\r\n===========" + user + "=打卡失败======“”" + df.format(new Date()) + "==============\r\n");
+                    SendEmailForEmail("打卡失败提醒", user + "打卡失败，打卡时间为：" + df.format(new Date()) + ";失败原因为：" + result, env.get(1));
                 }
                 // 每打一个，随机增加一个进程阻塞的时间，尽量保证每个人打卡的时间不一致
                 int sleep = (int) (60 * Math.random() + 1);
@@ -229,7 +227,9 @@ public class OaKaoq {
             }
             if (successNum == stringToMap.size()) {
                 System.out.println("全部成功共:" + successNum + "位");
-                resultss.put("全部成功", "全部成功");
+                List<String> res = new ArrayList<String>();
+                res.add("全部成功");
+                resultss.put("全部成功", res);
                 return resultss;
             } else {
                 //失败邮件提醒
@@ -237,7 +237,9 @@ public class OaKaoq {
                 return failUser;
             }
         }
-        resultss.put("成功", "成功");
+        List<String> res = new ArrayList<String>();
+        res.add("成功");
+        resultss.put("成功", res);
         return resultss;
     }
 
@@ -262,35 +264,42 @@ public class OaKaoq {
      * @return
      * @throws Exception
      */
-    public static Map<String, String> failCall(Map<String, String> failUsers) throws Exception {
+    public static Map<String, List<String>> failCall(Map<String, List<String>> failUsers) throws Exception {
         //通过登录链接得到一个cookie
         String loginUrl = "http://oa.ittx.com.cn/api/hrm/login/checkLogin"; //?loginid=hlwang@ittx.com.cn&userpassword=ec53c91144781b29d864d6a16a13e506_random_
         String dakaUrl = "http://oa.ittx.com.cn/api/hrm/kq/attendanceButton/punchButton";
-        Map<String, String> resultss = new HashMap<String, String>();
+        Map<String, List<String>> resultss = new HashMap<String, List<String>>();
         int successNum = 0;
-        Map<String, String> failUser = new HashMap<String, String>();
+        Map<String, List<String>> failUser = new HashMap<String, List<String>>();
         Map<String, String> results = new HashMap<String, String>();
-        for (Map.Entry<String, String> entry : failUsers.entrySet()) {
+        for (Map.Entry<String, List<String>> entry : failUsers.entrySet()) {
             String user = entry.getKey();
-            String pwd = decord(entry.getValue());
+            List<String> env = entry.getValue();
+
+            //get(0) 获取密码
+            String pwd = decord(env.get(0));
             String sessionId = callHttp(loginUrl + "?loginid=" + user + "&userpassword=" + pwd, "", true);
             //接收结果
             String result = callHttp(dakaUrl, sessionId, false);
             if (result.toLowerCase().contains("成功")) {
                 successNum += 1;
                 System.out.println("\r\n===========" + user + "=补卡成功======“”" + df.format(new Date()) + "==============\r\n");
+                //成功邮件提醒
+                SendEmailForEmail("打卡成功提醒", user + "打卡成功，打卡时间为：" + df.format(new Date()) + ";", env.get(1));
             } else {
                 failUser.put(user, entry.getValue());
                 results.put(user, "pwd：" + entry.getValue() + ",loginResult:" + sessionId + ",callResult:" + result);
                 System.out.println("\r\n===========" + user + "=补卡失败======“”" + df.format(new Date()) + "==============\r\n");
+                SendEmailForEmail("打卡失败提醒", user + "打卡失败，打卡时间为：" + df.format(new Date()) + ";失败原因为：" + result, env.get(1));
+
             }
-
             System.out.println("\r\n================================\r\n");
-
         }
         if (successNum == failUsers.size()) {
             System.out.println("全部补卡成功共" + successNum + "位");
-            resultss.put("全部成功", "全部成功");
+            List<String> res = new ArrayList<String>();
+            res.add("全部成功");
+            resultss.put("全部成功", res);
             return resultss;
         } else {
             //失败邮件提醒
@@ -373,6 +382,66 @@ public class OaKaoq {
         ts.sendMessage(message, message.getAllRecipients());
         ts.close();
 
+    }
+
+
+    /**
+     * 发送邮件
+     *
+     * @throws Exception
+     */
+    public static void SendEmailForEmail(String mailTittle, String mailText, String email) throws Exception {
+        String mailFrom = "1877143930@qq.com";
+        String password_mailFrom = "ivwclrzswndkdeeg";
+        String mailTo = email;
+//        String mailTittle = "打卡失败提醒";
+//        String mailText = firest ? "以下用户打卡失败，请处理" + user + "这是第一次打卡，5分钟后会进行补打" : "以下用户补打卡失败，请处理：" + user + "这是补打卡";
+        String mail_host = "smtp.qq.com";
+
+        Properties prop = new Properties();
+        prop.setProperty("mail.host", mail_host);
+        prop.setProperty("mail.transport.protocol", "smtp");
+        prop.setProperty("mail.smtp.auth", "true");
+        // 使用JavaMail发送邮件的5个步骤
+
+        // 1、创建session
+        Session session = Session.getInstance(prop);
+        // 开启Session的debug模式，这样就可以查看到程序发送Email的运行状态
+        session.setDebug(false);
+        // 2、通过session得到transport对象
+        Transport ts = session.getTransport();
+        // 3、使用邮箱的用户名和密码连上邮件服务器，发送邮件时，发件人需要提交邮箱的用户名和密码给smtp服务器，用户名和密码都通过验证之后才能够正常发送邮件给收件人。
+        ts.connect(mail_host, mailFrom, password_mailFrom);
+        // 4、创建邮件
+        Message message = createSimpleMailForOnlyEmail(session, mailFrom, mailTo, mailTittle, mailText);
+        // 5、发送邮件
+        ts.sendMessage(message, message.getAllRecipients());
+        ts.close();
+
+    }
+
+    /**
+     * @Method: createSimpleMail
+     * @Description: 创建一封只包含文本的邮件
+     */
+    public static MimeMessage createSimpleMailForOnlyEmail(Session session, String mailfrom, String mailTo, String mailTittle,
+                                                           String mailText) throws Exception {
+        // 创建邮件对象
+        MimeMessage message = new MimeMessage(session);
+        // 指明邮件的发件人
+        message.setFrom(new InternetAddress(mailfrom));
+        // 指明邮件的收件人，现在发件人和收件人是一样的，那就是自己给自己发
+
+        //设定单人收件
+        message.setRecipient(Message.RecipientType.TO, new InternetAddress(mailTo));
+        //设定多人收件
+//        message.setRecipients(Message.RecipientType.TO, to_address);
+        // 邮件的标题
+        message.setSubject(mailTittle);
+        // 邮件的文本内容
+        message.setContent(mailText, "text/html;charset=UTF-8");
+        // 返回创建好的邮件对象
+        return message;
     }
 
     /**
