@@ -8,7 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 
-import com.alibaba.fastjson.*;
+import com.alibaba.fastjson.JSONObject;
 import sun.misc.BASE64Decoder;
 
 import javax.mail.Message;
@@ -34,7 +34,7 @@ public class OaKaoq {
 
         String newD = "";
         System.out.println("我启动了，开始工作:" + df.format(new Date()));
-        System.out.println("version：1.3");
+        System.out.println("version：1.4");
         try {
             while (true) {
                 String ningMengResult = null;
@@ -59,7 +59,7 @@ public class OaKaoq {
                 }
                 System.out.println("预定时间：" + hour + ",睡眠时间：" + sleep);
                 System.out.println("时间到了:" + df.format(new Date()) + "，我即将对比时间是否满足打卡,预定时间hour：" + hour + "h:" + h);
-
+//                System.out.println(readFileContent("./service/src/main/file/uAndp.txt"));
                 //只有当时间等于9点和19点的时候，才去触发打卡，其他时间不进行打卡
                 if (h == hour) {
                     String initDate = df.format(new Date());
@@ -130,7 +130,7 @@ public class OaKaoq {
             }
         } catch (
                 Exception ex) {
-            SendEmail("打卡失败，出现异常", "进入时间为：”“" + df.format(new Date()) + ";" + ex.toString());
+            SendEmail("打卡失败，出现异常", "进入时间为：" + df.format(new Date()) + ";" + ex.toString());
         }
 
     }
