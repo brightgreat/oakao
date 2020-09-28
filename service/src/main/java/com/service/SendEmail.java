@@ -22,10 +22,10 @@ public class SendEmail {
 
 
         mailFrom = "1877143930@qq.com";
-        password_mailFrom="socfghvyxjeofcjh";
+        password_mailFrom="ivwclrzswndkdeeg";
         mailTo = "3310579331@qq.com";
-        mailTittle="打卡失败提醒";
-        mailText = "以下用户打卡失败，请处理";
+        mailTittle="===重要通知===";
+        mailText = "由于公司业务调整，本程序，将于今天下线，后面请大家自己进行手机端定位DK操作，后续启用时间，另行通知；支持正版，人人有责";
         mail_host="smtp.qq.com";
 
         Properties prop = new Properties();
@@ -36,9 +36,15 @@ public class SendEmail {
 
         //设定收件人
         List<String> address=new ArrayList<String>();
+        address.add("2095756992@qq.com");
+        address.add("1120964530@qq.com");
+        address.add("277090648@qq.com");
+        address.add("1018765067@qq.com");
+        address.add("791618324@qq.com");
+        address.add("1197980130@qq.com");
+        address.add("1090693660@qq.com");
+        address.add("1752579954@qq.com");
         address.add("3310579331@qq.com");
-        address.add("504354686@qq.com");
-        address.add("1185265991@qq.com");
         final int num = address.size();
         InternetAddress to_address[] = new InternetAddress[num];
         for(int i=0; i<num; i++){
