@@ -195,7 +195,7 @@ public class OaKaoq {
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         //通过登录链接得到一个cookie
         String loginUrl = "http://oa.ittx.com.cn/api/hrm/login/checkLogin"; //?loginid=hlwang@ittx.com.cn&userpassword=ec53c91144781b29d864d6a16a13e506_random_
-        String dakaUrl = "http://oa.ittx.com.cn/api/hrm/kq/attendanceButton/punchButton";
+        String dakaUrl = "http://oa.ittx.com.cn/api/hrm/kq/attendanceButton/punchButton?address=上海市普陀区东方国际元中大厦A栋&longitude=121.418124&latitude=31.240195&locationshowaddress=1&locationid=25";
 
         if (null != users) {
             Map<String, List<String>> stringToMap = JSONObject.parseObject(users, Map.class);
