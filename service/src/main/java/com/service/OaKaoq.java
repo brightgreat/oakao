@@ -25,7 +25,7 @@ public class OaKaoq {
 
     public static void main(String[] args) throws Exception {
 
-        long sleep = 3600;// millils  每20分钟触发一次
+        long sleep = 1200;// millils  每20分钟触发一次
         long lopnum = 0;
 
         int hour = 9; //默认值9 表示9点打卡
@@ -34,7 +34,7 @@ public class OaKaoq {
 
         String newD = "";
         System.out.println("我启动了，开始工作:" + df.format(new Date()));
-        System.out.println("version：1.5");
+        System.out.println("version：1.6");
         try {
             while (true) {
                 String ningMengResult = null;
@@ -64,26 +64,26 @@ public class OaKaoq {
                 if (h == hour) {
                     String initDate = df.format(new Date());
                     System.out.println("打卡时间到，开始打卡：" + initDate);
-//                    String users = readFileContent("./service/src/main/file/uAndp.txt");
-//                    System.out.println(users);
-//                    Map<String, List<String>> resule = call(users);
+                    String users = readFileContent("./service/src/main/file/uAndp.txt");
+                    System.out.println(users);
+                    Map<String, List<String>> resule = call(users);
                     //表示到点进入了打卡程序，不需要发邮件了
-//                    if (!resule.toString().toLowerCase().contains("成功")) {
-//                        //                    如果失败了 得到失败的那一个用户 就5分钟后再去打卡一次
-//                        for (int i = 0; i < 3; i++) {
-//                            Thread.sleep(300 * timeInterval);
-//                            Map<String, List<String>> failResuss = failCall(resule);
-//                            if (failResuss.toString().toLowerCase().contains("成功")) {
-//                                System.out.println("补卡成功：" + df.format(new Date()));
-//                                //如果打卡成功,结束这个循环
-//                                break;
-//                            } else {
-//                                //打卡依然失败，那么就把新反馈出来的失败账号，重新轮询打卡
-//                                resule = failResuss;
-//                            }
-//                        }
-//                        //这里可以写一个lop进行指定循环次数，间隔时间的打卡
-//                    } else {
+                    if (!resule.toString().toLowerCase().contains("成功")) {
+                        //                    如果失败了 得到失败的那一个用户 就5分钟后再去打卡一次
+                        for (int i = 0; i < 3; i++) {
+                            Thread.sleep(300 * timeInterval);
+                            Map<String, List<String>> failResuss = failCall(resule);
+                            if (failResuss.toString().toLowerCase().contains("成功")) {
+                                System.out.println("补卡成功：" + df.format(new Date()));
+                                //如果打卡成功,结束这个循环
+                                break;
+                            } else {
+                                //打卡依然失败，那么就把新反馈出来的失败账号，重新轮询打卡
+                                resule = failResuss;
+                            }
+                        }
+                        //这里可以写一个lop进行指定循环次数，间隔时间的打卡
+                    } else {
                         System.out.println("全部打卡成功，打卡时间是" + df.format(new Date()));
                         if (hour == 9) {
                             //柠檬打卡，每天打一次
@@ -92,23 +92,22 @@ public class OaKaoq {
                             //如果全部打卡成功，并且是早上9点打卡，那么这里将变量更改为19点
                             hour = 19;
                             //全部打卡成功之后，给sleep时间增加100s,以便达到打卡时间随机
-//                            if (sleep > 2000) { //如果定时时间已经达到40分钟以上这里重置为20分钟
-//                                sleep = 1200;
-//                            } else {
-//                                //给定时睡眠时间随机加一个100之间得随机数
-//                                sleep += (int) (100 * Math.random() + 1);
-//                            }
+                            if (sleep > 2000) { //如果定时时间已经达到40分钟以上这里重置为20分钟
+                                sleep = 1200;
+                            } else {
+                                //给定时睡眠时间随机加一个100之间得随机数
+                                sleep += (int) (100 * Math.random() + 1);
+                            }
                             System.out.println("全部打卡成功，现在的sleep时间为：" + sleep);
                         } else {
                             hour = 9;
                         }
                         //计算下次打卡时间
-//                        newD = timePastTenSecond(initDate, (int) sleep, hour);
-//                        System.out.println("下次打K时间为：" + newD);
-//                    }
+                        newD = timePastTenSecond(initDate, (int) sleep, hour);
+                        System.out.println("下次打K时间为：" + newD);
+                    }
                     //发送邮件，告诉打卡结果
 //                    SendEmail("打卡成功提醒", "进入时间为：" + initDate + ";" + readFileContent("./service/src/main/file/uAndp.txt") + ";全部打卡成功，现在的sleep时间为：" + sleep + ",下次进入时间为：" + newD + "/r/n 柠檬Result:" + ningMengResult);
-                    SendEmail("打卡成功提醒",  "柠檬Result:" + ningMengResult);
 
                 } else {
                     System.out.println("未到打卡时间：" + df.format(new Date()));

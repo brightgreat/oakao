@@ -26,11 +26,11 @@ public class test {
         conn.setRequestMethod("POST");
         conn.setRequestProperty("Content-Type", "text/plain");
         conn.setRequestProperty("Content-Language", "en-US");
-        conn.setRequestProperty("address", "上海市普陀区东方国际元中大厦A栋");
-        conn.setRequestProperty("longitude", "121.418124");
-        conn.setRequestProperty("latitude", "31.240195");
-        conn.setRequestProperty("locationshowaddress", "1");
-        conn.setRequestProperty("locationid", "25");
+//        conn.setRequestProperty("address", "上海市普陀区东方国际元中大厦A栋");
+//        conn.setRequestProperty("longitude", "121.418124");
+//        conn.setRequestProperty("latitude", "31.240195");
+//        conn.setRequestProperty("locationshowaddress", "1");
+//        conn.setRequestProperty("locationid", "25");
 
         if (!isLogin) {
             conn.setRequestProperty("Cookie", sessionId);
