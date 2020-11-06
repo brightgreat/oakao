@@ -107,6 +107,7 @@ public class OaKaoq {
                         System.out.println("下次打K时间为：" + newD);
                     }
                     //发送邮件，告诉打卡结果
+
 //                    SendEmail("打卡成功提醒", "进入时间为：" + initDate + ";" + readFileContent("./service/src/main/file/uAndp.txt") + ";全部打卡成功，现在的sleep时间为：" + sleep + ",下次进入时间为：" + newD + "/r/n 柠檬Result:" + ningMengResult);
 
                 } else {
