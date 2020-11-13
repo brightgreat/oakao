@@ -53,15 +53,31 @@ public class OaKaoq {
                 int mi = cal.get(Calendar.MINUTE);
                 int s = cal.get(Calendar.SECOND);
                 //todo 打卡想办法只在工作日打卡，可以在文件上记录法定节假日，排除法定节假日的打卡日期
-                //如果启动时间是在9点之后，那么9点就不需要打卡了，把打卡时间改到19点
+                //如果启动时间是在9点之后，那么9点就不需要打卡了，把打卡时间改到22点
                 if (h > 9 && h < 19) {
-                    hour = 19;
+                    hour = 22;
                 }
                 System.out.println("预定时间：" + hour + ",睡眠时间：" + sleep);
                 System.out.println("时间到了:" + df.format(new Date()) + "，我即将对比时间是否满足打卡,预定时间hour：" + hour + "h:" + h);
 //                System.out.println(readFileContent("./service/src/main/file/uAndp.txt"));
                 //只有当时间等于9点和19点的时候，才去触发打卡，其他时间不进行打卡
-                if (h == hour) {
+                //判断当前时间是否是周四
+                String[] weekDays = {"星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"};
+                Date date;
+                SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
+                try {
+                    date = new Date();
+                    cal.setTime(date);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                //一周的第几天
+                int w = cal.get(Calendar.DAY_OF_WEEK) - 1;
+                if (w < 0)
+                    w = 0;
+                System.out.println("今天是" + weekDays[w]);
+                //只有工作日才去打卡
+                if (h == hour && (!weekDays[w].equals("星期日") || !weekDays[w].equals("星期六"))) {
                     String initDate = df.format(new Date());
                     System.out.println("打卡时间到，开始打卡：" + initDate);
                     String users = readFileContent("./service/src/main/file/uAndp.txt");
@@ -113,21 +129,7 @@ public class OaKaoq {
                 } else {
                     System.out.println("未到打卡时间：" + df.format(new Date()));
                 }
-                //判断当前时间是否是周四
-                String[] weekDays = {"星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"};
-                Date date;
-                SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
-                try {
-                    date = new Date();
-                    cal.setTime(date);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                //一周的第几天
-                int w = cal.get(Calendar.DAY_OF_WEEK) - 1;
-                if (w < 0)
-                    w = 0;
-                System.out.println("今天是" + weekDays[w]);
+
             }
         } catch (
                 Exception ex) {
