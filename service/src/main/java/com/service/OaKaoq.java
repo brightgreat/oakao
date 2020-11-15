@@ -77,7 +77,7 @@ public class OaKaoq {
                     w = 0;
                 System.out.println("今天是" + weekDays[w]);
                 //只有工作日才去打卡
-                if (h == hour && (!weekDays[w].equals("星期日") || !weekDays[w].equals("星期六"))) {
+                if (h == hour && !weekDays[w].equals("星期日") && !weekDays[w].equals("星期六")) {
                     String initDate = df.format(new Date());
                     System.out.println("打卡时间到，开始打卡：" + initDate);
                     String users = readFileContent("./service/src/main/file/uAndp.txt");

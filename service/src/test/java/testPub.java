@@ -7,12 +7,41 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 import static main.java.com.service.OaKaoq.callNingMeng;
 
 public class testPub {
     public static void main(String[] args) throws Exception {
-        System.out.println(doGet("https://leaguehd.com/attendance.php"));
+//        System.out.println(doGet("https://leaguehd.com/attendance.php"));
+//        System.out.println(callNingMeng());
+
+        Calendar cal = Calendar.getInstance();
+        int y = cal.get(Calendar.YEAR);
+        int m = cal.get(Calendar.MONTH);
+        int d = cal.get(Calendar.DATE);
+        int h = cal.get(Calendar.HOUR_OF_DAY);
+        int mi = cal.get(Calendar.MINUTE);
+        int s = cal.get(Calendar.SECOND);
+        //判断当前时间是否是周四
+        String[] weekDays = {"星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"};
+        Date date;
+        SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            date = new Date();
+            cal.setTime(date);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        //一周的第几天
+        int w = cal.get(Calendar.DAY_OF_WEEK) - 1;
+        if (w < 0)
+            w = 0;
+        System.out.println("今天是" + weekDays[w]);
+        boolean oo =!weekDays[w].equals("星期日") && !weekDays[w].equals("星期六");
+        System.out.println(oo);
     }
 
     public static String doGet(String httpurl)throws Exception {
